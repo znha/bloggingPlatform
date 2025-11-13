@@ -1,4 +1,4 @@
-name: Node.js CI/CD for Blogging Platform API
+name: Node.js CI/CD for Blogging Platform API 
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  deploy-backend:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.18.0' # Or your desired Node.js version
+          node-version: '20.18.0' 
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run tests
-        run: npm test # Assuming you have a 'test' script in package.json
+        working-directory: ./backend
