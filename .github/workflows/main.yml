@@ -11,6 +11,9 @@ on:
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - name: Checkout repository
@@ -23,14 +26,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./backend
 
-      - name: Set up DATABASE_URL
-        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
-        working-directory: ./backend
+      - name: Validate Prisma schema
+        run: npx prisma validate
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
 
       - name: Deploy Prisma Migrations
-        run: npx prisma migrate deploy
-             npx prisma generate
-        working-directory: ./backend
+        run:  npx prisma migrate deploy 
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
