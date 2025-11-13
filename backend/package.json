@@ -1,4 +1,11 @@
 {
+  "name": "blogging-platform",
+  "version": "1.0.0",
+  "type": "module",
+  "script": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "@prisma/client": "^6.19.0",
     "cors": "^2.8.5",
@@ -7,5 +14,8 @@
     "helmet": "^8.1.0",
     "prisma": "^6.19.0",
     "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
