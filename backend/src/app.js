@@ -15,6 +15,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/posts", postsRouter);
+app.use("/auth", authRouter);
 
 // 404 handler
 app.use((req, res, next) => {
