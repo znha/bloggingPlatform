@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient()
+import {prisma} from "client.js"
 
 async function seed() {
     await prisma.user.createMany(

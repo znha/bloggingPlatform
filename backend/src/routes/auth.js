@@ -1,12 +1,9 @@
 import express from "express";
+import * as User from "../controllers/user.js" 
 const router = express.Router();
 
-router.get("/login", (req, res) => {
-  res.json({ status: "ok", uptime: process.uptime() });
-});
+router.post("/login", User.login);
 
-router.get("/register", (req, res) => {
-  res.json({ status: "ok", uptime: process.uptime() });
-});
+router.post("/register",User.register);
 
 export default router;
