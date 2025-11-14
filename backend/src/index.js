@@ -19,7 +19,18 @@ app.use("/posts", postsRouter);
 app.use("/auth", authRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Express!");
+  res.type("html").send(`
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8"/>
+        <title>Express on Vercel</title>
+      </head>
+      <body>
+        <h1>Welcome to Express on Vercel 🚀</h1>
+      </body>
+    </html>
+  `);
 });
 
 // 404 handler
