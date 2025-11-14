@@ -1,4 +1,4 @@
 import serverless from 'serverless-http';
-const app = require('../index'); 
+const app = require('../src/index'); 
 
 export default serverless(app);
