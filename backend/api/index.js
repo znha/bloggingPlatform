@@ -1,4 +1,4 @@
-const serverless = require('serverless-http');
-const app = require('../index'); // adjust path if needed
+import serverless from 'serverless-http';
+const app = require('../index'); 
 
-module.exports = serverless(app);
+export default serverless(app);
