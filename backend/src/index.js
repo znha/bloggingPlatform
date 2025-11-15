@@ -8,7 +8,7 @@ const app = express();
 
 // Built-in middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Third-party middleware
 app.use(cors());
