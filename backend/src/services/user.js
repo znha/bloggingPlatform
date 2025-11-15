@@ -16,4 +16,4 @@ export const registerUser = async (userData) => {
   return newUser;
 };
 
-export const loginUser = async (userData) => {};
+export const loginUser = async () => {};
