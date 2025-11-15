@@ -7,7 +7,7 @@ import authRouter from "./routes/auth.js";
 const app = express();
 
 // Built-in middleware
-app.use(express.json());
+app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 // Third-party middleware
