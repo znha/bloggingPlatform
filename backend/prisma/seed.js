@@ -4,8 +4,8 @@ async function seed() {
     await prisma.user.createMany(
         {
             data: [
-                {name: 'Zinah' , email: 'zinah@example.com'},
-                {name: 'ali' , email: 'ali@example.com'}
+                {name: 'Zinah' , email: 'zinah32564@example.com', password:'1234567'},
+                {name: 'ali' , email: 'alissdfs@example.com',password:'1234567'}
             ]
         }
     )
