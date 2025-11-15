@@ -5,8 +5,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/server.js",
-    "lint": "eslint .",
-    "postinstall": "npx prisma generate"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
