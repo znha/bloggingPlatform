@@ -6,6 +6,7 @@
     "start": "node src/index.js",
     "dev": "nodemon src/server.js",
     "lint": "eslint .",
+    "test": "jest",
     "postinstall": "npx prisma generate"
   },
   "dependencies": {
@@ -23,8 +24,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/supertest": "^6.0.3",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
-    "nodemon": "^3.1.11"
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.1.4"
   }
 }
