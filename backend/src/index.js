@@ -7,8 +7,9 @@ import authRouter from "./routes/auth.js";
 const app = express();
 
 // Built-in middleware
-app.use(express.json({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '4mb' }));
+app.use(express.urlencoded({ extended: true, limit: '4mb' }));
+
 
 // Third-party middleware
 app.use(cors());
