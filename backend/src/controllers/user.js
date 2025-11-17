@@ -18,7 +18,16 @@ export const register = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "15m",
     });
-    res.status(201).json({ msg: "User created", user: user, token: token });
+    res.status(201).json({
+      msg: "User created",
+      user: {
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+        id: user.id,
+      },
+      token: token,
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -49,7 +58,12 @@ export const login = async (req, res) => {
 
     res.json({
       msg: "Login success",
-      user: user,
+      user: {
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+        id: user.id,
+      },
       token: token,
       refreshToken: refreshToken,
     });
