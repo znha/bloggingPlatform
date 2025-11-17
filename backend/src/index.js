@@ -13,7 +13,10 @@ app.use(express.urlencoded({ extended: true, limit: '4mb' }));
 app.use(cookieParser());
 
 // Third-party middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // or '*' for dev
+  credentials: true, // if using cookies
+}));
 app.use(morgan("dev"));
 
 // Routes

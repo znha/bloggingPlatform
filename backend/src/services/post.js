@@ -1,6 +1,6 @@
 import * as PostModel from "../models/post.js";
 
-export const getAllPosts = async (email) => {
+export const getAllPosts = async () => {
   const posts = await PostModel.getAllPosts();
   return posts;
 };
