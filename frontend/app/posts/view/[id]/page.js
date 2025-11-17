@@ -1,19 +1,19 @@
-import React from 'react'
-import PostView from '../../../components/posts/PostView'
-export default function PostPage () {
-  const post = 
-  {
-    id: '1',
-    title: 'How to Build a Scalable API',
-    content: 'Learn the principles of designing scalable RESTful APIs using Node.js and Express...',
-    author: 'Zinah',
-    date: '2025-11-15',
-  }
-  return (
-    <PostView
-      post={post}
-    />
-  )
+import React from "react";
+import PostView from "../../../components/posts/PostView";
+import { notFound } from "next/navigation";
+
+async function getPost(id) {
+  const res = await fetch(`${process.env.API_URL}/posts/view/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error("Failed to fetch post");
+  return res.json();
 }
 
- 
+export default async function PostPage( {params} ) {
+  const id = await params.then((p) => p.id)
+  const post = await getPost(id);
+  if (!post) return notFound();
+
+  return <PostView post={post} />;
+}

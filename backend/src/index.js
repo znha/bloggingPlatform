@@ -14,12 +14,6 @@ app.use(express.urlencoded({ extended: true, limit: '4mb' }));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.use((req, res, next) => {
-  console.log('req.url:', req.url);
-  console.log('req.originalUrl:', req.originalUrl);
-  next();
-});
-
 // Routes
 app.use("/posts", postsRouter);
 app.use("/auth", authRouter);

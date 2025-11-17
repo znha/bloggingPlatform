@@ -15,5 +15,3 @@ export const registerUser = async (userData) => {
   const newUser = await UserModel.createUser(userData);
   return newUser;
 };
-
-export const loginUser = async () => {};
