@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 
-export default function PostForm({ onSubmit, loading }) {
-  const [formData, setFormData] = useState({
+export default function PostForm({ onSubmit, loading, myformData= {
     title: "",
     content: ""
-  });
-
+  } }) {
+  const [formData, setFormData] = useState(myformData);
+  console.log("Form Data:", formData);
+  const updating = myformData.title !== "" ;
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -16,6 +17,7 @@ export default function PostForm({ onSubmit, loading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     onSubmit(formData); // Pass data to parent or dispatch Redux thunk
   };
 
@@ -25,7 +27,7 @@ export default function PostForm({ onSubmit, loading }) {
       className=" w-full mx-4  shadow-md p-4 space-y-4"
     >
       <h2 className="text-2xl font-bold text-[#914151]  rounded p-2 w-full">
-        Create New Post
+       {!updating?"Create New Post":"Update Post"}
       </h2>
 
       <div>
@@ -60,7 +62,8 @@ export default function PostForm({ onSubmit, loading }) {
           loading ? 'bg-gray-400' : 'bg-[#914151]'
         } hover:bg-[#bd6677] text-white font-semibold rounded-md shadow-md transition duration-200`}
       >
-       {loading ? 'Creating...' : 'Create Post'}
+        {!updating && <span>{loading ? 'Creating...' : 'Create Post'}</span>}
+        {updating && <span>{loading? 'Updating...' : 'Update Post'}</span>}
 
       </button>
     </form>
