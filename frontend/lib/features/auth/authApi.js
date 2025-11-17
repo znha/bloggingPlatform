@@ -3,6 +3,7 @@ export const register = async (userData) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
+    credentials: 'include'
   });
 
   if (!res.ok) {
@@ -18,6 +19,7 @@ export const login = async (userData) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
+    credentials: 'include'
   });
 
   if (!res.ok) {
