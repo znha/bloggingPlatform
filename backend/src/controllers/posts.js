@@ -10,10 +10,10 @@ export const viewAll = async (req, res) => {
 };
 
 export const viewById = async (req, res) => {
-	const { id } = req.params;
+  const { id } = req.params;
   try {
     const post = await PostService.getPost(parseInt(id));
-    res.json(post);
+    res.status(200).json(post);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -30,6 +30,33 @@ export const create = async (req, res) => {
     });
 
     res.status(201).json({ msg: "Post created" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const remove = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await PostService.deletePost(parseInt(id));
+    res.status(200).json({ msg: "Post deleted" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+export const edit = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    if (!title || !content ) throw new Error("Missing fields");
+    await PostService.update({
+      id: parseInt(id),
+      title: title,
+      content: content,
+    });
+
+    res.status(200).json({ msg: "Post Updated" });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

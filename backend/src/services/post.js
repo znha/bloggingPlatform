@@ -6,10 +6,18 @@ export const getAllPosts = async (email) => {
 };
 
 export const getPost = async (id) => {
-  const posts = await PostModel.getPost(id);
-  return posts;
+   const post = await PostModel.getPost(id);
+    return post;
 };
 
 export const create = async (post) => {
    await PostModel.create(post);
 };
+
+export const deletePost = async (id) => {
+   await PostModel.deletePost(id);
+}
+
+export const update = async (post) => {
+   await PostModel.update(post);
+}

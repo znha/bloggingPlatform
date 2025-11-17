@@ -2,13 +2,13 @@ import express from "express";
 import * as Post from "../controllers/posts.js" 
 import { postSchema } from '../validation/postSchema.js';
 import { validate } from '../middleware/validate.js';
-
+import { verifyToken } from '../middleware/auth.js';
 const router = express.Router();
 
 router.get("/", Post.viewAll);
-router.post("/create", validate(postSchema), Post.create);
+router.post("/create",verifyToken, validate(postSchema), Post.create);
 router.get("/view/:id", Post.viewById);
-// router.get("/edit/{id}", Post.edit);
-// router.get("/remove/{id}", Post.remove);
+router.put("/edit/:id", verifyToken, validate(postSchema), Post.edit);
+router.delete("/remove/:id",verifyToken,  Post.remove);
 
 export default router;  

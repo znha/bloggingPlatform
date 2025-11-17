@@ -3,12 +3,14 @@ import cors from "cors";
 import morgan from "morgan";
 import postsRouter from "./routes/posts.js";
 import authRouter from "./routes/auth.js";
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
 // Built-in middleware
 app.use(express.json({ limit: '4mb' }));
 app.use(express.urlencoded({ extended: true, limit: '4mb' }));
+app.use(cookieParser());
 
 // Third-party middleware
 app.use(cors());
