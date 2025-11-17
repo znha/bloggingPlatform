@@ -5,16 +5,20 @@ import * as UserService from "../services/user.js";
 
 export const register = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) throw new Error("Missing fields");
+    const { name, email, password } = req.body;
+    if (!name|| !email || !password) throw new Error("Missing fields");
 
     const userExists = await UserService.checkUserExists(email);
     if (userExists) throw new Error("Email already in use");
 
     const hashed = await bcrypt.hash(password, 10);
-    const user = { email: email, password: hashed };
+    const user = {name: name,  email: email, password: hashed };
     await UserService.registerUser(user);
-    res.status(201).json({ msg: "User created" });
+    const payload = { sub: user.id, email: user.email };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "15m",
+    });
+    res.status(201).json({ msg: "User created" , user: user, token: token});
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
