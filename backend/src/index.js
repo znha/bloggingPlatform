@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 // Third-party middleware
 app.use(cors({
-  origin: 'https://blogging-platform-frontend.vercel.app/', // or '*' for dev
+  origin: 'https://blogging-platform-frontend.vercel.app', // or '*' for dev
   credentials: true, // if using cookies
 }));
 app.use(morgan("dev"));
