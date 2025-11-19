@@ -1,10 +1,4 @@
 {
-  "projects": [
-    {
-      "src": "backend",
-      "use": "@vercel/node"
-    }
-  ],
   "builds": [
     {
       "src": "backend/src/index.js",
