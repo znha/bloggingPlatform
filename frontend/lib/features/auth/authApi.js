@@ -1,4 +1,5 @@
 export const register = async (userData) => {
+  console.log(process.env.API_URL)
   const res = await fetch(`${process.env.API_URL}/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
