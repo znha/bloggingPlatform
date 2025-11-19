@@ -17,7 +17,7 @@ export const register = async (userData) => {
 export const login = async (userData) => {
     console.log(process.env.API_URL)
 
-  const res = await fetch(`${process.env.API_URL}/auth/login`, {
+  const res = await fetch(`https://blogging-platform-xx17.vercel.app/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
