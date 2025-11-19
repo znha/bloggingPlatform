@@ -15,7 +15,6 @@ export default function Login({ onSubmit }) {
     }));
   };
   const handleSubmit = (e) => {
-    console.log("Submitting login form with data:", formData);
     e.preventDefault();
     onSubmit(formData); // Pass to parent or dispatch Redux thunk
   };

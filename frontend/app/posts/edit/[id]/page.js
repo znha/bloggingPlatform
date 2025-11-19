@@ -3,7 +3,7 @@ import React from 'react'
 import EditPost from './editPost';
 import { notFound } from "next/navigation";
 async function getPost(id) {
-  const res = await fetch(`http://localhost:4000/posts/view/${id}`, {
+  const res = await fetch(`${process.env.API_URL}/posts/view/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch post");

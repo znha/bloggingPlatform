@@ -1,5 +1,5 @@
 export const createPostApi = async (data) => {
-  const res = await fetch('http://localhost:4000/posts/create', {
+  const res = await fetch(`${process.env.API_URL}/posts/create`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -10,7 +10,7 @@ export const createPostApi = async (data) => {
 };
 
 export const updatePostApi = async (data) => {
-  const res = await fetch(`http://localhost:4000/posts/edit/${data.id}`, {
+  const res = await fetch(`${process.env.API_URL}/posts/edit/${data.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({title: data.title, content: data.content, authorId: data.authorId}),

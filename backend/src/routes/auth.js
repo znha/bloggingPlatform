@@ -3,7 +3,7 @@ import * as User from "../controllers/user.js"
 import { validate } from '../middleware/validate.js';
 import { loginSchema, registerSchema } from '../validation/authSchema.js';
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.post("/login",validate(loginSchema), User.login);
 

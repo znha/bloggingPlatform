@@ -18,7 +18,6 @@ export default  function  EditPost({ post} ) {
     
     data["authorId"] = parseInt(user.id);
     data["id"] = post.id;
-    console.log("Updating post with data:", data);
     dispatch(updatePost(data));
   };
 

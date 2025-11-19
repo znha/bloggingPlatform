@@ -6,7 +6,7 @@ export default function DeletePostDialog({ postId }) {
   const router = useRouter();
   const onConfirmDelete = async (postId) => {
     try {
-      const res = await fetch(`http://localhost:4000/posts/remove/${postId}`, {
+      const res = await fetch(`${process.env.API_URL}/posts/remove/${postId}`, {
         method: "DELETE",
       });
       if (res.ok) {

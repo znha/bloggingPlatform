@@ -6,7 +6,6 @@ export default function PostForm({ onSubmit, loading, myformData= {
     content: ""
   } }) {
   const [formData, setFormData] = useState(myformData);
-  console.log("Form Data:", formData);
   const updating = myformData.title !== "" ;
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -17,7 +16,6 @@ export default function PostForm({ onSubmit, loading, myformData= {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
     onSubmit(formData); // Pass data to parent or dispatch Redux thunk
   };
 

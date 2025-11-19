@@ -3,7 +3,7 @@ import * as Post from "../controllers/posts.js"
 import { postSchema } from '../validation/postSchema.js';
 import { validate } from '../middleware/validate.js';
 import { verifyToken } from '../middleware/auth.js';
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.get("/", Post.viewAll);
 router.post("/create",verifyToken, validate(postSchema), Post.create);
